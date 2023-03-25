@@ -4,6 +4,7 @@ Whisper ASR is a speech recognition library based on Whisper C++ and compiled to
 ## Installation
 To install the library, run:
 
+
 ```bash
 npm install whisper-asr
 ```
