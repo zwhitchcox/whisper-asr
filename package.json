@@ -7,13 +7,16 @@
   "directories": {
     "lib": "lib"
   },
-  "dependencies": {},
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "typescript": "^5.0.2"
   },
   "scripts": {
     "watch": "tsc -w",
-    "build": "tsc"
+    "build": "tsc",
+    "build-demo": "cd demo && rm -rf dist && npm install && npm run build",
+    "copy-demo-static": "mkdir -p demo/dist && cp -r dist/static demo/dist/static && find demo/dist/static/models ! -name 'ggml-tiny.en.bin' -type f -exec rm -f {} +",
+    "deploy": "npm run build-demo && npm run copy-demo-static && gh-pages -d demo/dist"
   },
   "keywords": [],
   "author": "",

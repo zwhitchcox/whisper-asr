@@ -1,6 +1,8 @@
 # Whisper ASR
 Whisper ASR is a speech recognition library based on Whisper C++ and compiled to WebAssembly. It provides an easy-to-use API for automatic speech recognition (ASR) in web applications. This library is not limited to React and can be used with other JavaScript frameworks or vanilla JavaScript.
 
+Check out the [Live Demo](https://whisper-asr.zwhitchcox.dev) to see it in action.
+
 ## Installation
 To install the library, run:
 
