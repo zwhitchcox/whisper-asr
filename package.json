@@ -8,6 +8,7 @@
     "lib": "lib"
   },
   "devDependencies": {
+    "react-tooltip-lite": "^1.12.0",
     "typescript": "^5.0.2"
   },
   "scripts": {
