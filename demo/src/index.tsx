@@ -59,7 +59,7 @@ const App: React.FC = () => {
 
     <div className="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 lg:max-w-5xl md:max-w-3xl sm:max-w-xl sm:mx-auto px-4">
-        <div className={`absolute inset-0 transition duration-100 ease-in-out bg-gradient-to-r ${colorBg} to-white shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl`}></div>
+        <div className={`absolute inset-0 transition duration-100 ease-in-out bg-gradient-to-r ${colorBg} to-transparent shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl`}></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <h1 className="text-4xl font-bold text-center mb-8">Whisper ASR Demo</h1>
           <p className="text-lg text-center leading-relaxed mb-8">
