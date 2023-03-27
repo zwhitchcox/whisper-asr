@@ -6,15 +6,50 @@ Check out the [Live Demo](https://zwhitchcox.dev/whisper-asr) to see it in actio
 ## Installation
 To install the library, run:
 
-
 ```bash
 npm install whisper-asr
 ```
 
+###  Downloading Static Files and Models
+Use the CLI included in the Whisper ASR package to download the required static files and models. Check the [CLI for downloading static files and models](#cli-for-downloading-static-files-and-models) section for detailed instructions.
+
+### Configuring Headers for WebAssembly Workers
+To allow WebAssembly workers to run correctly, you need to set the following headers for your site:
+
+```
+'Cross-Origin-Opener-Policy': 'same-origin',
+'Cross-Origin-Embedder-Policy': 'require-corp',
+```
+
+These headers ensure that the resources are properly isolated and protected, which is required by the WebAssembly workers.
+
+#### Example configuration for Express.js
+
+If you're using Express.js as your web server, you can set the headers using the following code:
+
+```javascript
+const express = require('express');
+const app = express();
+
+app.use((req, res, next) => {
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+  next();
+});
+
+// Your other Express.js configurations and routes here...
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+```
+
+Make sure to adapt the headers configuration to your specific web server or hosting platform. Check their documentation for information on how to set custom headers.
+
 ## Usage
 Here's an example of how to use the library with React:
 
-```javascript
+```typescript
 import * as React from 'react';
 import { createWhisperStream, WhisperStreamInstance } from 'whisper-asr';
 
@@ -155,6 +190,43 @@ Here's an example of how to use the library with vanilla JavaScript:
 ```
 
 In this example, the init function initializes the whisperStream and starts the transcription process. The handleStart and handleStop functions are used to start and stop recording, respectively.
+
+
+## CLI for downloading static files and models
+Whisper ASR package includes a command-line interface (CLI) to easily download the required static files and ASR models. To use the CLI, follow the steps below:
+
+### Installation
+First, make sure that you have the package installed:
+
+```bash
+```bash
+npm install whisper-asr
+```
+
+### Usage
+To download the necessary static files and models, run the following command:
+
+```bash
+whisper-asr get-static-files <model-names> <destination-directory>
+```
+
+* `<model-names>`: A comma-separated list of model names to download, for example: tiny.en,base.en,small.en.
+* `<destination-directory>`: The directory where the static files and models will be saved.
+
+
+For example:
+
+```bash
+whisper-asr get-static-files tiny.en,base.en,small.en ./static
+```
+
+This command will download the static files and models, and save them in the ./static directory.
+
+### Serving Static Files
+Make sure to copy the static files to a location where your web server can serve them. If the urlPrefix is /static, copy the files to a location where the web server will serve them under the /static route.
+
+### Gitignore
+Add the `/static` directory (or the directory containing the static files) to your .`gitignore` file to exclude the downloaded files from your version control..
 
 ## Contributing
 Feel free to open issues or submit pull requests if you have any suggestions or improvements for the library. Contributions are always welcome!
